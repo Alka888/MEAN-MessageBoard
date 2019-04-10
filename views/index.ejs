@@ -6,13 +6,49 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
+	<style>
+	body{
+    width: 970px;
+    margin: 0px auto;
+    margin-top: 10px;
+    border: 2px solid brown;
+    box-shadow: 10px 10px 50px;
+    min-height: 500px;
+    border-radius: 10px;
+    padding: 20px;
+}
+ #bt2:hover {
+	background: green;
+    box-shadow: red;
+    color: black;
+    transform: translateY(-7px);
+  }
+
+  #bt1:hover {
+	background: black;
+    box-shadow: red;
+    color: white;
+    transform: translateY(-7px);
+  }
+
+  #b1{
+	float: right;
+	margin-left: 380px;
+  }
+
+  #b2{
+	
+	float: right;
+	margin-left: 380px;
+  }
+	</style>
 </head>
 
 <body>
 	<div id="wrapper">
 		<fieldset>
 			<h1> The Dojo Message Board</h1>
-			<p>______________________________________________________________________________________________</p>
+			<hr>
 			<% if(messages.registration) { %>
 				<% for (var x of messages.registration) { %>
 				<h5 class='error'><%= x %></h5>
@@ -22,14 +58,14 @@
 				<table class="table table-sm">
 					<tbody>
 						<tr>
-							<h3>Name:<input type="text" name="name"></h3>
+							<h3><b>Name:</b></b><input type="text" name="name"></h3>
 						</tr>
 						<td>
-							<h3>Message: <textarea name="message" cols='50' rows='5'></textarea><br><br></h3>
+							<h3><b>Message:</b> <textarea name="message" cols='50' rows='5'></textarea><br><br></h3>
 						</td>
 					</tbody>
 				</table>
-				<button type="submit" style="background: black; color: white;margin-left: 390px;">Add a Message</button>
+				<input id="bt1" type="submit" value="Post Message" style="margin-left:352px;">
 			</form>
 			<br><br>
 			
@@ -51,14 +87,14 @@
 				<table class="table table-sm">
 					<tbody>
 						<tr>
-							<h3>Name:<input type="text" name="cname"></h3>
+							<h3><b>Name:</b><input type="text" name="cname"></h3>
 						</tr>
 						<td>
-							<h3>Comment: <textarea name="ccomment" cols='50' rows='5'></textarea><br><br></h3>
+							<h3><b>Comment:</b> <textarea name="ccomment" cols='50' rows='5'></textarea><br><br></h3>
 						</td>
 					</tbody>
 				</table>
-				<button type="submit" style="background: green; color: white; margin-left: 390px;">Add a Comment</button><br>
+				<input id="bt2" type="submit" value="Post Comment"style="margin-left:352px;">
 			<% }) %>
 			</form>
 		</fieldset>
