@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="wrapper">
+		<fieldset>
+			<h1> The Dojo Message Board</h1>
+			<p>______________________________________________________________________________________________</p>
+			<% if(messages.registration) { %>
+				<% for (var x of messages.registration) { %>
+				<h5 class='error'><%= x %></h5>
+				<% } %>
+				<% } %>
+			<form action='/message' method=post>
+				<table class="table table-sm">
+					<tbody>
+						<tr>
+							<h3>Name:<input type="text" name="name"></h3>
+						</tr>
+						<td>
+							<h3>Message: <textarea name="message" cols='50' rows='5'></textarea><br><br></h3>
+						</td>
+					</tbody>
+				</table>
+				<button type="submit" style="background: black; color: white;margin-left: 390px;">Add a Message</button>
+			</form>
+			<br><br>
+			
+			<% allmessages.forEach(function (onemessage) { %>
+			<h4><%= onemessage.name %></h4>
+			<p><%= onemessage.message %></p>
+
+				<% for(var k =0 ; k < onemessage.comments.length ;k++) { %>
+					<h4><%= onemessage.comments[k].cname %></h4>
+					<p><%= onemessage.comments[k].ccomment %></p>
+				<% }%>
+			<br>
+			<% if(messages.addmess) { %>
+				<% for (var x of messages.addmess) { %>
+					<h5><%= x %></h5>
+				<% } %>
+			<% } %>
+			<form action='/comment/<%= onemessage._id %>' method=post>
+				<table class="table table-sm">
+					<tbody>
+						<tr>
+							<h3>Name:<input type="text" name="cname"></h3>
+						</tr>
+						<td>
+							<h3>Comment: <textarea name="ccomment" cols='50' rows='5'></textarea><br><br></h3>
+						</td>
+					</tbody>
+				</table>
+				<button type="submit" style="background: green; color: white; margin-left: 390px;">Add a Comment</button><br>
+			<% }) %>
+			</form>
+		</fieldset>
+	</div>
+</body>
+
+</html>
